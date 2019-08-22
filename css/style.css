@@ -1,0 +1,218 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  font-family: "Lato", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+.question {
+  color: #000;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  background-image: url("../img/foto3.jpg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  position: absolute;
+}
+.start {
+  font-size: 2em;
+  font-weight: bolder;
+  word-break: break-all;
+  background-color: #242424;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+  width: 55%;
+  padding: 5%;
+  margin: 70% 20% 0 20%;
+  height: auto;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  color: #fff;
+}
+
+#icon {
+  vertical-align: middle;
+  margin-left: 5%;
+}
+.quiz {
+  font-size: 1.5em;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-weight: bolder;
+  width: 65%;
+  padding: 2%;
+  margin: 25% 15% 0 15%;
+  border-radius: 7px;
+  cursor: pointer;
+  position: absolute;
+  color: #fff;
+  display: "hidden";
+}
+
+.result {
+  font-size: 1.5em;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-weight: bolder;
+  width: 65%;
+  padding: 2%;
+  margin: 70% 15% 0 15%;
+  border-radius: 7px;
+  cursor: pointer;
+  position: absolute;
+  color: #000;
+  display: "hidden";
+}
+
+.timer {
+  font-size: 1em;
+  font-weight: bolder;
+  word-break: break-all;
+  background-color: #242424;
+  width: 35%;
+  padding: 5%;
+  margin: 10% 30% 10% 30%;
+  height: auto;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+}
+.counter {
+  font-size: 3.5em;
+  margin: 2%;
+  color: #fff;
+}
+.correct {
+  font-size: 1em;
+  width: 75%;
+  padding: 5%;
+  margin: 5% 10% 0 10%;
+  height: auto;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  background-color: #5cb85c;
+  position: relative;
+  display: none;
+}
+.wrong {
+  font-size: 1em;
+  width: 75%;
+  padding: 5%;
+  margin: 5% 10% 0 10%;
+  height: auto;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  background-color: #db150f;
+  position: relative;
+  display: none;
+}
+.choice {
+  font-size: 1em;
+  width: 75%;
+  padding: 5%;
+  margin: 5% 10% 0 10%;
+  height: auto;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+}
+
+@media screen and (min-width: 375px) {
+  .start {
+    font-size: 2.5em;
+    width: 65%;
+    padding: 5%;
+    margin: 60% 15% 0 15%;
+  }
+  .quiz {
+    width: 68%;
+    padding: 2%;
+    margin: 15% 15% 0 15%;
+  }
+  .result {
+    width: 68%;
+    padding: 2%;
+    margin: 60% 15% 0 15%;
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .start {
+    font-size: 2.5em;
+    width: 65%;
+    padding: 5%;
+    margin: 55% 15% 0 15%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .start {
+    width: 38%;
+    padding: 2%;
+    margin: 30% 30% 0 30%;
+  }
+  .quiz {
+    width: 38%;
+    padding: 2%;
+    margin: 15% 30% 0 30%;
+  }
+  .result {
+    width: 38%;
+    padding: 2%;
+    margin: 30% 30% 0 30%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .start {
+    width: 28%;
+    padding: 2%;
+    margin: 30% 35% 0 35%;
+  }
+  .quiz {
+    width: 28%;
+    padding: 2%;
+    margin: 12% 35% 0 35%;
+  }
+  .result {
+    width: 28%;
+    padding: 2%;
+    margin: 30% 35% 0 35%;
+  }
+}
+
+@media screen and (min-width: 1278px) {
+  .start {
+    width: 28%;
+    padding: 2%;
+    margin: 22% 35% 0 35%;
+  }
+  .quiz {
+    width: 18%;
+    padding: 2%;
+    margin: 8% 40% 0 40%;
+  }
+  .result {
+    width: 18%;
+    padding: 2%;
+    margin: 20% 40% 0 40%;
+  }
+}

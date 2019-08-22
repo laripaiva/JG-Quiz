@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Projeto 2 - Quiz</title>
+    <link rel="stylesheet" href="./css/style.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+    <script type="text/javascript" src="./js/quiz.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="start" class="start">
+        Começar <i class="fas fa-chevron-circle-right" id="icon"></i>
+      </div>
+      <div id="quiz" class="quiz">
+        <div class="timer">
+          <div id="counter" class="counter"></div>
+        </div>
+        <div id="question" class="question"></div>
+        <div id="choices">
+          <div
+            class="choice"
+            id="choiceA"
+            style="background-color:#cc1812;"
+            onclick="checkAnswer('A')"
+          ></div>
+          <div
+            class="choice"
+            id="choiceB"
+            style="background-color:#f59814;"
+            onclick="checkAnswer('B')"
+          ></div>
+          <div
+            class="choice"
+            id="choiceC"
+            style="background-color:#04aadb;"
+            onclick="checkAnswer('C')"
+          ></div>
+          <div id="correct" class="correct">Correto :)</div>
+          <div id="wrong" class="wrong">Errado :(</div>
+        </div>
+      </div>
+      <div id="result" class="result"></div>
+      <div id="progress"></div>
+      <div id="scoreContainer" style="display: none"></div>
+    </div>
+  </body>
+</html>
