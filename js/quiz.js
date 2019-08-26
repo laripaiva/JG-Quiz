@@ -8,11 +8,11 @@ const result = document.getElementById("result");
 
 $(document).ready(function() {
   //esconder e mostrar as divs
-  $("#quiz").hide();
-  $("#result").hide();
+  document.getElementById("quiz").style.display = "none";
+  document.getElementById("result").style.display = "none";
   $("#start").click(function() {
-    $("#start").hide();
-    $("#quiz").show();
+    document.getElementById("start").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
     startQuiz();
   });
 });
@@ -45,42 +45,49 @@ let questions = [
 //Variáveis
 let runningQuestion = 0;
 let timer;
-let score = 0;
+let scoreCounter = 0;
 let lastQuestion = questions.length - 1;
 let seconds = 5;
+let counter;
 
 //Renderizar questões na tela
 function renderQuestion() {
   if (runningQuestion <= lastQuestion) {
-    $("#quiz").show();
-    seconds = 5;
-    clearInterval(timer);
-    let q = questions[runningQuestion];
-    let realQuestion = runningQuestion + 1;
-    document.getElementById("question").innerHTML =
-      realQuestion + ") " + q.question;
-    document.getElementById("choiceA").innerHTML = q.choiceA;
-    document.getElementById("choiceB").innerHTML = q.choiceB;
-    document.getElementById("choiceC").innerHTML = q.choiceC;
-    timer = window.setInterval(stopWatch, 1000);
+    document.getElementById("quiz").style.display = "block";
+    setTimeout(shows(), 5000);
   } else {
     console.log("------SCORE------");
-    console.log(score);
-    $("#quiz").hide();
-    if (score == 0) {
+    console.log(scoreCounter);
+    document.getElementById("quiz").style.display = "none";
+    if (scoreCounter == 0) {
       document.getElementById("result").innerHTML =
-        "Você acertou " + score + " questões :(";
+        "Você acertou " + scoreCounter + " questões :(";
     } else if (score == 1) {
       document.getElementById("result").innerHTML =
-        "Você acertou " + score + " questão!";
+        "Você acertou " + scoreCounter + " questão!";
     } else {
       document.getElementById("result").innerHTML =
-        "Você acertou " + score + " questões!";
+        "Você acertou " + scoreCounter + " questões!";
     }
     $("#result").show();
   }
 }
 
+function shows() {
+  clearInterval(timer);
+  clearTimeout(counter);
+  seconds = 5;
+  realQuestion = runningQuestion + 1;
+  let q = questions[runningQuestion];
+  document.getElementById("score").innerHTML =
+    "Score: " + scoreCounter + "/" + questions.length;
+  document.getElementById("question").innerHTML =
+    realQuestion + ") " + q.question;
+  document.getElementById("choiceA").innerHTML = q.choiceA;
+  document.getElementById("choiceB").innerHTML = q.choiceB;
+  document.getElementById("choiceC").innerHTML = q.choiceC;
+  timer = window.setInterval(stopWatch, 1000);
+}
 //função que inicia o quiz
 function startQuiz() {
   console.log("--------INICIOU---------");
@@ -90,18 +97,20 @@ function startQuiz() {
 
 //contador regressivo das questões
 function stopWatch() {
-  $("#choiceA").show();
-  $("#choiceB").show();
-  $("#choiceC").show();
-  $("#correct").hide();
-  $("#wrong").hide();
+  document.getElementById("correct").style.display = "none";
+  document.getElementById("wrong").style.display = "none";
+  document.getElementById("question").style.display = "block";
+  document.getElementById("choiceA").style.display = "block";
+  document.getElementById("choiceB").style.display = "block";
+  document.getElementById("choiceC").style.display = "block";
   if (runningQuestion <= lastQuestion) {
     if (seconds > 0) {
       console.log(seconds);
       document.getElementById("counter").innerHTML = seconds;
       seconds--;
     } else if (seconds == 0) {
-      console.log("Perdeu a chance otário");
+      document.getElementById("counter").innerHTML = seconds;
+      hidden();
       wrongAnswer();
       runningQuestion++;
       renderQuestion();
@@ -112,33 +121,34 @@ function stopWatch() {
 //Função responsável por verificar a resposta
 function checkAnswer(answer) {
   if (answer == questions[runningQuestion].correct) {
-    score++;
+    hidden();
     correctAnswer();
+    scoreCounter++;
     seconds = 5;
-    clearInterval(timer);
     runningQuestion++;
     renderQuestion();
   } else {
+    hidden();
     wrongAnswer();
     seconds = 5;
-    clearInterval(timer);
     runningQuestion++;
     renderQuestion();
   }
 }
 
+function hidden() {
+  document.getElementById("question").style.display = "none";
+  document.getElementById("choiceA").style.display = "none";
+  document.getElementById("choiceB").style.display = "none";
+  document.getElementById("choiceC").style.display = "none";
+}
+
 function correctAnswer() {
-  $("#choiceA").hide();
-  $("#choiceB").hide();
-  $("#choiceC").hide();
-  $("#correct").show();
+  document.getElementById("correct").style.display = "block";
   console.log("correct");
 }
 
 function wrongAnswer() {
-  $("#choiceA").hide();
-  $("#choiceB").hide();
-  $("#choiceC").hide();
-  $("#wrong").show();
+  document.getElementById("wrong").style.display = "block";
   console.log("wrong");
 }

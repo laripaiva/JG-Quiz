@@ -60,7 +60,7 @@ ul {
   cursor: pointer;
   position: absolute;
   color: #fff;
-  display: "hidden";
+  display: "none";
 }
 
 .result {
@@ -74,7 +74,7 @@ ul {
   cursor: pointer;
   position: absolute;
   color: #000;
-  display: "hidden";
+  display: "none";
 }
 
 .timer {
