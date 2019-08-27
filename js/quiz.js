@@ -1,21 +1,27 @@
-const counter2 = document.getElementById("counter");
-const question = document.getElementById("question");
-const choices = document.getElementById("choices");
-const choiceA = document.getElementById("choiceA");
-const choiceB = document.getElementById("choiceB");
-const choiceC = document.getElementById("choiceC");
-const result = document.getElementById("result");
-
 $(document).ready(function() {
-  //esconder e mostrar as divs
   document.getElementById("quiz").style.display = "none";
   document.getElementById("result").style.display = "none";
+  document.getElementById("text-result").style.display = "none";
+  document.getElementById("return").style.display = "none";
   $("#start").click(function() {
     document.getElementById("start").style.display = "none";
     document.getElementById("quiz").style.display = "block";
     startQuiz();
   });
+  $("#return").click(function() {
+    document.getElementById("start").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
+    console.log("comeback");
+    startQuiz();
+  });
 });
+
+// function comeBack() {
+//   document.getElementById("result").style.display = "none";
+//   document.getElementById("quiz").style.display = "block";
+//   startQuiz();
+
+// }
 
 //array de questões
 let questions = [
@@ -42,7 +48,7 @@ let questions = [
   }
 ];
 
-//Variáveis
+// //Variáveis
 let runningQuestion = 0;
 let timer;
 let scoreCounter = 0;
@@ -54,29 +60,37 @@ let counter;
 function renderQuestion() {
   if (runningQuestion <= lastQuestion) {
     document.getElementById("quiz").style.display = "block";
-    setTimeout(shows(), 5000);
+    document.getElementById("question").style.display = "block";
+    document.getElementById("choiceA").style.display = "block";
+    document.getElementById("choiceB").style.display = "block";
+    document.getElementById("choiceC").style.display = "block";
+    document.getElementById("correct").style.display = "none";
+    document.getElementById("wrong").style.display = "none";
+    document.getElementById("result").style.display = "none";
+    document.getElementById("text-result").style.display = "none";
+    document.getElementById("return").style.display = "none";
+    setTimeout(shows(), 1200);
   } else {
     console.log("------SCORE------");
     console.log(scoreCounter);
     document.getElementById("quiz").style.display = "none";
+    document.getElementById("result").style.display = "block";
+    document.getElementById("return").style.display = "block";
+    document.getElementById("text-result").style.display = "block";
     if (scoreCounter == 0) {
-      document.getElementById("result").innerHTML =
+      document.getElementById("text-result").innerHTML =
         "Você acertou " + scoreCounter + " questões :(";
     } else if (score == 1) {
-      document.getElementById("result").innerHTML =
+      document.getElementById("text-result").innerHTML =
         "Você acertou " + scoreCounter + " questão!";
     } else {
-      document.getElementById("result").innerHTML =
+      document.getElementById("text-result").innerHTML =
         "Você acertou " + scoreCounter + " questões!";
     }
-    $("#result").show();
   }
 }
 
 function shows() {
-  clearInterval(timer);
-  clearTimeout(counter);
-  seconds = 5;
   realQuestion = runningQuestion + 1;
   let q = questions[runningQuestion];
   document.getElementById("score").innerHTML =
@@ -86,23 +100,25 @@ function shows() {
   document.getElementById("choiceA").innerHTML = q.choiceA;
   document.getElementById("choiceB").innerHTML = q.choiceB;
   document.getElementById("choiceC").innerHTML = q.choiceC;
+  clearInterval(timer);
+  clearTimeout(counter);
   timer = window.setInterval(stopWatch, 1000);
 }
 //função que inicia o quiz
 function startQuiz() {
   console.log("--------INICIOU---------");
+  setTimeout(timer);
+  runningQuestion = 0;
+  scoreCounter = 0;
+  lastQuestion = questions.length - 1;
+  seconds = 5;
+  counter = 0;
   renderQuestion();
   stopWatch();
 }
 
 //contador regressivo das questões
 function stopWatch() {
-  document.getElementById("correct").style.display = "none";
-  document.getElementById("wrong").style.display = "none";
-  document.getElementById("question").style.display = "block";
-  document.getElementById("choiceA").style.display = "block";
-  document.getElementById("choiceB").style.display = "block";
-  document.getElementById("choiceC").style.display = "block";
   if (runningQuestion <= lastQuestion) {
     if (seconds > 0) {
       console.log(seconds);
@@ -112,8 +128,6 @@ function stopWatch() {
       document.getElementById("counter").innerHTML = seconds;
       hidden();
       wrongAnswer();
-      runningQuestion++;
-      renderQuestion();
     }
   }
 }
@@ -124,15 +138,9 @@ function checkAnswer(answer) {
     hidden();
     correctAnswer();
     scoreCounter++;
-    seconds = 5;
-    runningQuestion++;
-    renderQuestion();
   } else {
     hidden();
     wrongAnswer();
-    seconds = 5;
-    runningQuestion++;
-    renderQuestion();
   }
 }
 
@@ -146,9 +154,15 @@ function hidden() {
 function correctAnswer() {
   document.getElementById("correct").style.display = "block";
   console.log("correct");
+  runningQuestion++;
+  seconds = 5;
+  setTimeout(() => renderQuestion(), 1200);
 }
 
 function wrongAnswer() {
   document.getElementById("wrong").style.display = "block";
   console.log("wrong");
+  runningQuestion++;
+  seconds = 5;
+  setTimeout(() => renderQuestion(), 1200);
 }

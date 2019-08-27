@@ -45,6 +45,22 @@ ul {
   color: #fff;
 }
 
+.return {
+  font-size: 1.5em;
+  font-weight: bolder;
+  background-color: #242424;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
+  width: 80%;
+  padding: 5%;
+  margin: 5% 5% 0 5%;
+  height: auto;
+  border-radius: 7px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  color: #fff;
+}
+
 #icon {
   vertical-align: middle;
   margin-left: 5%;
@@ -64,7 +80,6 @@ ul {
 }
 
 .result {
-  font-size: 1.5em;
   background-color: rgba(255, 255, 255, 0.4);
   font-weight: bolder;
   width: 65%;
@@ -73,6 +88,13 @@ ul {
   border-radius: 7px;
   cursor: pointer;
   position: absolute;
+  color: #000;
+  display: "none";
+}
+
+.text-result {
+  font-size: 1.5em;
+  position: relative;
   color: #000;
   display: "none";
 }
@@ -109,6 +131,9 @@ ul {
   background-color: #5cb85c;
   position: relative;
   display: none;
+  transition-duration: 2s;
+  transition-delay: 2s;
+  transition-timing-function: linear;
 }
 .wrong {
   font-size: 1em;
@@ -123,6 +148,9 @@ ul {
   background-color: #db150f;
   position: relative;
   display: none;
+  transition-duration: 2s;
+  transition-delay: 2s;
+  transition-timing-function: linear;
 }
 .choice {
   font-size: 1em;
@@ -143,6 +171,12 @@ ul {
     padding: 5%;
     margin: 60% 15% 0 15%;
   }
+  .return {
+    font-size: 1.5em;
+    width: 65%;
+    padding: 5%;
+    margin: 5% 15% 0 15%;
+  }
   .quiz {
     width: 68%;
     padding: 2%;
@@ -162,12 +196,23 @@ ul {
     padding: 5%;
     margin: 55% 15% 0 15%;
   }
+  .return {
+    font-size: 1.5em;
+    width: 65%;
+    padding: 5%;
+    margin: 5% 15% 0 15%;
+  }
 }
 @media screen and (min-width: 768px) {
   .start {
     width: 38%;
     padding: 2%;
     margin: 30% 30% 0 30%;
+  }
+  .return {
+    width: 38%;
+    padding: 2%;
+    margin: 5% 30% 0 30%;
   }
   .quiz {
     width: 38%;
@@ -187,6 +232,12 @@ ul {
     padding: 2%;
     margin: 30% 35% 0 35%;
   }
+
+  .return {
+    width: 38%;
+    padding: 2%;
+    margin: 5% 30% 0 30%;
+  }
   .quiz {
     width: 28%;
     padding: 2%;
@@ -204,6 +255,11 @@ ul {
     width: 28%;
     padding: 2%;
     margin: 22% 35% 0 35%;
+  }
+  .return {
+    width: 48%;
+    padding: 2%;
+    margin: 5% 25% 0 25%;
   }
   .quiz {
     width: 18%;
